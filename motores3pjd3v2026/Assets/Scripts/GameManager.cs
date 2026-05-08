@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public enum EstadoDoJogo { Iniciando, MenuPrincipal, Gameplay }
+    public enum EstadoDoJogo { Iniciando,MenuPrincipal,Gameplay }
     public EstadoDoJogo estadoAtual;
 
     private void Awake()
@@ -17,26 +17,38 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             estadoAtual = EstadoDoJogo.Iniciando;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 
     
     private void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
+            estadoAtual = EstadoDoJogo.Iniciando;
             MudarCena("Splash", EstadoDoJogo.Iniciando);
+            Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
+        }
+        
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            estadoAtual = EstadoDoJogo.MenuPrincipal;
+            MudarCena("Menu Principal", EstadoDoJogo.MenuPrincipal);
+            Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
+        }
+        
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            estadoAtual = EstadoDoJogo.Gameplay;
+            MudarCena("Get Started_Scene", EstadoDoJogo.Gameplay);
+            Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
         }
     }
 
-    public void MudarCena(string GetStarted_scene, EstadoDoJogo novoEstado)
+    public void MudarCena(string getStartedScene, EstadoDoJogo novoEstado)
     {
         estadoAtual = novoEstado;
         Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
-        SceneManager.LoadScene(GetStarted_scene);
+        SceneManager.LoadScene(getStartedScene);
     }
 
     public void AlocarInputAoJogador(PlayerInput playerInput)
