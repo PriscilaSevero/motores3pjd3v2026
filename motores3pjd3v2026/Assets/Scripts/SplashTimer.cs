@@ -1,19 +1,17 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SplashTimer : MonoBehaviour
 {
     void Start()
     {
-        
-        StartCoroutine(EsperarEPular());
+        Invoke("IrParaOMenuPrincipal", 2f);
     }
 
-    IEnumerator EsperarEPular()
+    void IrParaOMenuPrincipal()
     {
-        yield return new WaitForSeconds(2f); 
-        
-        
-        GameManager.Instance.MudarCena("Menu de Entrada", GameManager.JogoEstado.MenuPrincipal);
+
+        SceneManager.LoadScene("Menu Principal");
     }
+
 }

@@ -1,43 +1,46 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
-using UnityEngine.InputSystem;    
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    
     public static GameManager Instance { get; private set; }
 
-    
-    public enum JogoEstado { Iniciando, MenuPrincipal, Gameplay }
-    public JogoEstado estadoAtual;
+    public enum EstadoDoJogo { Iniciando, MenuPrincipal, Gameplay }
+    public EstadoDoJogo estadoAtual;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
+            estadoAtual = EstadoDoJogo.Iniciando;
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
     
-    public void MudarCena(string GetStarted_scene, JogoEstado novoEstado)
+    private void Start()
     {
-        
-        if (estadoAtual == JogoEstado.Iniciando || novoEstado != JogoEstado.Iniciando)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            estadoAtual = novoEstado;
-            SceneManager.LoadScene(GetStarted_scene);
+            MudarCena("Splash", EstadoDoJogo.Iniciando);
         }
     }
 
-    
-    public void ConfigurarControle(PlayerInput playerInput)
+    public void MudarCena(string GetStarted_scene, EstadoDoJogo novoEstado)
     {
-        Debug.Log("Controle está entregue.");
-        
+        estadoAtual = novoEstado;
+        Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
+        SceneManager.LoadScene(GetStarted_scene);
+    }
+
+    public void AlocarInputAoJogador(PlayerInput playerInput)
+    {
+        if (playerInput != null) Debug.Log("Input Alocado!");
     }
 }
