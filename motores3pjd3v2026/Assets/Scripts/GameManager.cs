@@ -6,7 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public enum EstadoDoJogo { Iniciando,MenuPrincipal,Gameplay }
+    public enum EstadoDoJogo 
+    {
+        Iniciando,
+        MenuPrincipal,
+        Gameplay
+    }
+
     public EstadoDoJogo estadoAtual;
 
     private void Awake()
@@ -15,44 +21,29 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            estadoAtual = EstadoDoJogo.Iniciando;
-        }
-    }
 
-    
-    private void Start()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            estadoAtual = EstadoDoJogo.Iniciando;
             MudarCena("Splash", EstadoDoJogo.Iniciando);
-            Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
         }
-        
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        else
         {
-            estadoAtual = EstadoDoJogo.MenuPrincipal;
-            MudarCena("Menu Principal", EstadoDoJogo.MenuPrincipal);
-            Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
-        }
-        
-        else if (SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            estadoAtual = EstadoDoJogo.Gameplay;
-            MudarCena("Get Started_Scene", EstadoDoJogo.Gameplay);
-            Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
+            Destroy(gameObject);
         }
     }
 
-    public void MudarCena(string getStartedScene, EstadoDoJogo novoEstado)
+    public void MudarCena(string nomeDaCena, EstadoDoJogo novoEstado)
     {
         estadoAtual = novoEstado;
         Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
-        SceneManager.LoadScene(getStartedScene);
+        SceneManager.LoadScene(nomeDaCena);
     }
 
-    public void AlocarInputAoJogador(PlayerInput playerInput)
+
+    public void SairDoJogo()
     {
-        if (playerInput != null) Debug.Log("Input Alocado!");
+        Debug.Log("Saindo do jogo...");
+        Application.Quit();
     }
 }
+
+
+

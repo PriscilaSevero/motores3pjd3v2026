@@ -3,12 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class CarregarCena : MonoBehaviour
 {
-
-    public string GetStarted_Scene;
-
-    public void Carregar()
+    public void IniciarJogo()
     {
-        SceneManager.LoadScene(GetStarted_Scene);
+        
+        GameManager.Instance.MudarCena("GetStarted_Scene", GameManager.EstadoDoJogo.Gameplay);
     }
 
+    public void Sair()
+    {
+        GameManager.Instance.SairDoJogo();
+    }
 }

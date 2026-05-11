@@ -5,13 +5,12 @@ public class SplashTimer : MonoBehaviour
 {
     void Start()
     {
-        Invoke("IrParaOMenuPrincipal", 2f);
+        Invoke("IrParaMenu", 2f);
     }
 
-    void IrParaOMenuPrincipal()
+    void IrParaMenu()
     {
-
-        SceneManager.LoadScene("Menu Principal");
+        
+        GameManager.Instance.MudarCena("Menu Principal", GameManager.EstadoDoJogo.MenuPrincipal);
     }
-
 }
