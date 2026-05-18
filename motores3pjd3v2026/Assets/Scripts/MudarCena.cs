@@ -6,11 +6,11 @@ public class CarregarCena : MonoBehaviour
     public void IniciarJogo()
     {
         
-        GameManager.Instance.MudarCena("GetStarted_Scene", GameManager.EstadoDoJogo.Gameplay);
+        GameManager.Instancia.CarregarCena("GetStarted_Scene");
     }
 
     public void Sair()
     {
-        GameManager.Instance.SairDoJogo();
+        GameManager.Instancia.SairJogo();
     }
 }

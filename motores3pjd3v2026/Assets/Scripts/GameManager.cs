@@ -4,46 +4,104 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instancia;
 
-    public enum EstadoDoJogo 
+    public enum EstadoJogo
     {
         Iniciando,
         MenuPrincipal,
         Gameplay
     }
 
-    public EstadoDoJogo estadoAtual;
+    public EstadoJogo estadoAtual;
+    private PlayerInput entradaJogador;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instancia == null)
         {
-            Instance = this;
+            Instancia = this;
             DontDestroyOnLoad(gameObject);
-
-            MudarCena("Splash", EstadoDoJogo.Iniciando);
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
 
-    public void MudarCena(string nomeDaCena, EstadoDoJogo novoEstado)
+    private void OnEnable()
     {
-        estadoAtual = novoEstado;
-        Debug.Log(">>> ESTADO ATUAL: " + estadoAtual);
-        SceneManager.LoadScene(nomeDaCena);
+        SceneManager.sceneLoaded += AoCarregarCena;
     }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= AoCarregarCena;
+    }
 
-    public void SairDoJogo()
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Splash")
+        {
+            AtualizarEstadoPorCena("Splash");
+            AlocarInput();
+        }
+        else
+        {
+            CarregarCena("Splash");
+        }
+    }
+
+    public void CarregarCena(string nomeCena)
+    {
+        SceneManager.LoadScene(nomeCena);
+    }
+
+    private void AoCarregarCena(Scene cena, LoadSceneMode modo)
+    {
+        AtualizarEstadoPorCena(cena.name);
+        AlocarInput();
+    }
+
+    private void AtualizarEstadoPorCena(string nomeCena)
+    {
+        if (nomeCena == "Splash")
+        {
+            MudarEstado(EstadoJogo.Iniciando);
+        }
+        else if (nomeCena == "Menu Principal")
+        {
+            MudarEstado(EstadoJogo.MenuPrincipal);
+        }
+        else if (nomeCena == "GetStarted_Scene")
+        {
+            MudarEstado(EstadoJogo.Gameplay);
+        }
+    }
+
+    public void MudarEstado(EstadoJogo novoEstado)
+    {
+        estadoAtual = novoEstado;
+        Debug.Log("Estado atual alterado para: " + estadoAtual);
+    }
+
+    public void AlocarInput()
+    {
+        entradaJogador = FindFirstObjectByType<PlayerInput>();
+        if (entradaJogador != null)
+        {
+            Debug.Log("Player Input encontrado na cena atual!");
+        }
+        else
+        {
+            Debug.Log("Nenhum Player Input encontrado nesta cena.");
+        }
+    }
+
+    public void SairJogo()
     {
         Debug.Log("Saindo do jogo...");
         Application.Quit();
     }
 }
-
-
-

@@ -11,6 +11,6 @@ public class SplashTimer : MonoBehaviour
     void IrParaMenu()
     {
         
-        GameManager.Instance.MudarCena("Menu Principal", GameManager.EstadoDoJogo.MenuPrincipal);
+        GameManager.Instancia.CarregarCena("Menu Principal");
     }
 }
