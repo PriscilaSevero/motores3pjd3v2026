@@ -1,10 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instancia;
+    
+    
+    public TextMeshProUGUI msgVitoria;
+    public int restantes;
+    public AudioClip clipMoeda, clipVitoria;
 
     public enum EstadoJogo
     {
@@ -77,6 +83,12 @@ public class GameManager : MonoBehaviour
         else if (nomeCena == "GetStarted_Scene")
         {
             MudarEstado(EstadoJogo.Gameplay);
+            
+            
+            if (!SceneManager.GetSceneByName("GUI").isLoaded)
+            {
+                SceneManager.LoadScene("GUI", LoadSceneMode.Additive);
+            }
         }
     }
 
@@ -96,6 +108,22 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Nenhum Player Input encontrado nesta cena.");
+        }
+    }
+    
+    public void SubtrairMoedas(int valor)
+    {
+        restantes -= valor;
+        
+    
+        PlayerObserverManager.NotificarMoedas(restantes);
+       
+        if (restantes <= 0)
+        {
+            if (msgVitoria != null)
+            {
+                msgVitoria.text = "PARABÉNS!";
+            }
         }
     }
 
