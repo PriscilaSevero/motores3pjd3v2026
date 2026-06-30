@@ -148,6 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16385513d02a62348bc71910aaf654a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  msgVitoria: {fileID: 0}
+  restantes: 5
+  clipMoeda: {fileID: 0}
+  clipVitoria: {fileID: 0}
   estadoAtual: 0
 --- !u!4 &1061487132
 Transform:
