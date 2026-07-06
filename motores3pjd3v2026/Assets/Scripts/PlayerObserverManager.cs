@@ -2,9 +2,11 @@ using System;
 
 public static class PlayerObserverManager
 {
-    public static event Action<int> OnMoedasAtualizadas;
-    public static void NotificarMoedas(int quantidade)
+    public static event Action<int> OnMoedasAlteradas;
+    public static void NotificarMoedasAlteradas(int quantidade)
     {
-        OnMoedasAtualizadas?.Invoke(quantidade);
+        OnMoedasAlteradas?.Invoke(quantidade);
     }
+    
+   
 }

@@ -7,28 +7,20 @@ public class ControladorInterface : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerObserverManager.OnMoedasAtualizadas += AtualizarTextoMoedas;
+        PlayerObserverManager.OnMoedasAlteradas += AtualizarTextoMoedas;
     }
 
     private void OnDisable()
     {
-        PlayerObserverManager.OnMoedasAtualizadas -= AtualizarTextoMoedas;
+        PlayerObserverManager.OnMoedasAlteradas -= AtualizarTextoMoedas;
     }
+    
 
-    private void Start()
-    {
-        
-        if (GameManager.Instancia != null)
-        {
-            AtualizarTextoMoedas(GameManager.Instancia.restantes);
-        }
-    }
-
-    private void AtualizarTextoMoedas(int moedasRestantes)
+    private void AtualizarTextoMoedas(int quantidade)
     {
         if (textoMoedas != null)
         {
-            textoMoedas.text = $"Moedas Restantes: {moedasRestantes}";
+            textoMoedas.text = $"Moedas {quantidade}";
         }
     }
 }

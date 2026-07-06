@@ -8,11 +8,6 @@ public class Moeda : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (GameManager.Instancia != null)
-            {
-                GameManager.Instancia.SubtrairMoedas(1);
-            }
-            
             Destroy(gameObject);
         }
     }

@@ -111,21 +111,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void SubtrairMoedas(int valor)
-    {
-        restantes -= valor;
-        
-    
-        PlayerObserverManager.NotificarMoedas(restantes);
-       
-        if (restantes <= 0)
-        {
-            if (msgVitoria != null)
-            {
-                msgVitoria.text = "PARABÉNS!";
-            }
-        }
-    }
+  
 
     public void SairJogo()
     {
