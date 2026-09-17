@@ -32,7 +32,7 @@
                     "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Player 1",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
