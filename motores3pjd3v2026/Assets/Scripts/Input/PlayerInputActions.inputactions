@@ -51,7 +51,7 @@
                 {
                     "name": "up",
                     "id": "4d1949a1-651a-4ea1-be50-404b5000b19e",
-                    "path": "W",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player 1",
@@ -62,7 +62,7 @@
                 {
                     "name": "down",
                     "id": "0bcd28a7-3750-43cd-a459-96f866d4cea5",
-                    "path": "S",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player 1",
@@ -73,7 +73,7 @@
                 {
                     "name": "left",
                     "id": "592d89ff-cf6c-4870-ac81-e0e700d286e0",
-                    "path": "A",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player 1",
@@ -84,24 +84,13 @@
                 {
                     "name": "right",
                     "id": "0f392686-5ec9-4215-80d7-8985e04cd53e",
-                    "path": "D",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player 1",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "ecea693b-82e3-4aaa-8dfa-d28a827ad7b2",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -220,7 +209,7 @@
                 {
                     "name": "",
                     "id": "155c9bf9-a9d9-4485-8757-63b7f00daefb",
-                    "path": "<Keyboard>/rightCtrl",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player 2",
@@ -231,28 +220,5 @@
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Player 1",
-            "bindingGroup": "Player 1",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Player 2",
-            "bindingGroup": "Player 2",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        }
-    ]
+    "controlSchemes": []
 }
