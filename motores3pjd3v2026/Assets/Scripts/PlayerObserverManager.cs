@@ -3,17 +3,24 @@ using System;
 
 public class PlayerObserverManager : MonoBehaviour
 {
-    public static Action OnCoinCollected;
+    public static Action<StarterAssets.ThirdPersonController> OnCoinCollected;
 
-    public static Action<int> OnCoinCountChanged;
+    public static Action<StarterAssets.ThirdPersonController, int> OnCoinCountChanged;
 
-    public static void NotifyCoinCollected()
+    public static Action OnAllCoinsCollected;
+
+    public static void NotifyCoinCollected(StarterAssets.ThirdPersonController player)
     {
-        OnCoinCollected?.Invoke();
+        OnCoinCollected?.Invoke(player);
     }
 
-    public static void NotifyCoinCountChanged(int amount)
+    public static void NotifyCoinCountChanged(StarterAssets.ThirdPersonController player, int amount)
     {
-        OnCoinCountChanged?.Invoke(amount);
+        OnCoinCountChanged?.Invoke(player, amount);
+    }
+
+    public static void NotifyAllCoinsCollected()
+    {
+        OnAllCoinsCollected?.Invoke();
     }
 }
