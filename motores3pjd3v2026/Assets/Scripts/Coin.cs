@@ -5,6 +5,8 @@ public class Coin : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("COLISÃO COM A MOEDA: " + other.name);
+
         if (!other.CompareTag("Player"))
             return;
 
@@ -17,8 +19,11 @@ public class Coin : MonoBehaviour
 
         Coin[] remainingCoins = FindObjectsByType<Coin>(FindObjectsSortMode.None);
 
+        Debug.Log("MOEDAS RESTANTES: " + remainingCoins.Length);
+
         if (remainingCoins.Length == 1)
         {
+            Debug.Log("TODAS AS MOEDAS FORAM COLETADAS!");
             PlayerObserverManager.NotifyAllCoinsCollected();
         }
 

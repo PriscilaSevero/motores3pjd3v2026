@@ -7,6 +7,7 @@ public class CoinUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text player1CoinText;
     [SerializeField] private TMP_Text player2CoinText;
+    [SerializeField] private TMP_Text winnerText;
 
     private void OnEnable()
     {
@@ -20,6 +21,8 @@ public class CoinUI : MonoBehaviour
 
     private void UpdateCoins(ThirdPersonController player, int amount)
     {
+        Debug.Log("COIN UI RECEBEU: " + amount);
+
         if (player == null)
             return;
 
