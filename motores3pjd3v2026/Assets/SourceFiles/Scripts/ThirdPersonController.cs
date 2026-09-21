@@ -119,9 +119,15 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
-        private int _coinCount = 0;
+        // =====================================================
+        // CONTADORES
+        // =====================================================
 
+        private int _coinCount = 0;
         public int CoinCount => _coinCount;
+
+        private int _starCount = 0;
+        public int StarCount => _starCount;
 
         private bool IsCurrentDeviceMouse
         {
@@ -475,17 +481,19 @@ namespace StarterAssets
         }
 
         // =====================================================
-        // MOEDAS
+        // MOEDAS E ESTRELAS
         // =====================================================
 
         private void OnEnable()
         {
             PlayerObserverManager.OnCoinCollected += CollectCoin;
+            PlayerObserverManager.OnStarCollected += CollectStar;
         }
 
         private void OnDisable()
         {
             PlayerObserverManager.OnCoinCollected -= CollectCoin;
+            PlayerObserverManager.OnStarCollected -= CollectStar;
         }
 
         public void CollectCoin(ThirdPersonController player)
@@ -499,6 +507,14 @@ namespace StarterAssets
 
             MoveSpeed += 1.0f;
             SprintSpeed += 1.0f;
+        }
+
+        public void CollectStar(ThirdPersonController player)
+        {
+            if (player != this)
+                return;
+
+            _starCount++;
         }
     }
 }

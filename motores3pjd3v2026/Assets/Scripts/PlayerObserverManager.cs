@@ -9,6 +9,10 @@ public class PlayerObserverManager : MonoBehaviour
 
     public static Action OnAllCoinsCollected;
 
+    public static Action<StarterAssets.ThirdPersonController> OnStarCollected;
+
+    public static Action OnAllStarsCollected;
+
     public static void NotifyCoinCollected(StarterAssets.ThirdPersonController player)
     {
         OnCoinCollected?.Invoke(player);
@@ -22,5 +26,15 @@ public class PlayerObserverManager : MonoBehaviour
     public static void NotifyAllCoinsCollected()
     {
         OnAllCoinsCollected?.Invoke();
+    }
+
+    public static void NotifyStarCollected(StarterAssets.ThirdPersonController player)
+    {
+        OnStarCollected?.Invoke(player);
+    }
+
+    public static void NotifyAllStarsCollected()
+    {
+        OnAllStarsCollected?.Invoke();
     }
 }

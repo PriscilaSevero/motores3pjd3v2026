@@ -16,12 +16,12 @@ public class WinnerManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerObserverManager.OnAllCoinsCollected += ShowWinner;
+        PlayerObserverManager.OnAllStarsCollected += ShowWinner;
     }
 
     private void OnDisable()
     {
-        PlayerObserverManager.OnAllCoinsCollected -= ShowWinner;
+        PlayerObserverManager.OnAllStarsCollected -= ShowWinner;
     }
 
     public void ShowWinner()
@@ -36,11 +36,11 @@ public class WinnerManager : MonoBehaviour
         {
             if (player.transform.parent.name == "PlayerRobot (1)")
             {
-                player1 = player.CoinCount;
+                player1 = player.StarCount;
             }
             else if (player.transform.parent.name == "PlayerRobot (2)")
             {
-                player2 = player.CoinCount;
+                player2 = player.StarCount;
             }
         }
 
