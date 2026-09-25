@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using UnityEngine;
 using System;
 
@@ -37,4 +38,17 @@ public class PlayerObserverManager : MonoBehaviour
     {
         OnAllStarsCollected?.Invoke();
     }
+=======
+using System;
+
+public static class PlayerObserverManager
+{
+    public static event Action<int> OnMoedasAlteradas;
+    public static void NotificarMoedasAlteradas(int quantidade)
+    {
+        OnMoedasAlteradas?.Invoke(quantidade);
+    }
+    
+   
+>>>>>>> d8c0f6118bd357172b40678661437d93f191e297
 }

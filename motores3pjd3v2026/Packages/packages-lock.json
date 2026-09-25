@@ -176,6 +176,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.ugui": {
       "version": "2.5.0",
       "depth": 0,
@@ -188,6 +189,8 @@
         "com.unity.modules.physics": "1.0.0"
       }
     },
+=======
+>>>>>>> d8c0f6118bd357172b40678661437d93f191e297
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,
